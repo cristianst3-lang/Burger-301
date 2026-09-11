@@ -1166,3 +1166,23 @@ background-position: center;
 #dados-pedido.visivel {
     display: block;
 }
+
+/* CABEÇALHO COMPACTO NO CELULAR */
+
+@media (max-width: 768px) {
+
+    header {
+        padding: 18px 15px;
+    }
+
+    header h1 {
+        font-size: 28px;
+        margin-bottom: 2px;
+    }
+
+    header p {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+}
