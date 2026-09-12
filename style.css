@@ -1200,3 +1200,32 @@ background-position: center;
     }
 
 }
+
+/* RODAPÉ COM ESTILO DO CABEÇALHO */
+
+.rodape {
+    background-color: #111;
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+    margin-top: 50px;
+}
+
+.rodape h2 {
+    font-size: 32px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.rodape p {
+    font-size: 15px;
+    margin: 4px 0;
+}
+
+.rodape .copyright {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 13px;
+    opacity: 0.8;
+}
