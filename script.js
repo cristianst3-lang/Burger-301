@@ -872,15 +872,14 @@ if (
     item.adicionais.length > 0
 ) {
 
-    item.adicionais.forEach(
-        function (adicional) {
+   item.adicionais.forEach(
+    function (adicional) {
 
-            mensagem +=
-                `   + ${adicional.nome}\n`;
+        mensagem +=
+            `➕ ${adicional.nome}\n`;
 
-        }
-    );
-
+    }
+);
 }
 
 
