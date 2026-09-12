@@ -1233,3 +1233,16 @@ background-position: center;
     font-weight: 500;
 }
 ```
+.rodape h2 {
+    font-size: 32px;
+    margin-bottom: 0;
+    color: white;
+    font-weight: bold;
+}
+
+.rodape .slogan-rodape {
+    font-size: 16px;
+    color: #f28c28;
+    margin: 0 0 8px;
+    font-weight: 500;
+}
