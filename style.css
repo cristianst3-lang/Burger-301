@@ -1192,3 +1192,11 @@ background-position: center;
 .cabecalho {
     display: none;
 }
+
+@media (max-width: 768px) {
+
+    .cabecalho {
+        display: none !important;
+    }
+
+}
