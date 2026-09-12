@@ -1186,3 +1186,9 @@ background-position: center;
     }
 
 }
+
+/* CABEÇALHO OCULTO — MANTÉM A ESTRUTURA DA PÁGINA */
+
+.cabecalho {
+    display: none;
+}
