@@ -1201,7 +1201,8 @@ background-position: center;
 
 }
 
-/* RODAPÉ COM ESTILO DO CABEÇALHO */
+```css
+/* RODAPÉ — ESTILO BURGER 301 */
 
 .rodape {
     background-color: #111;
@@ -1214,18 +1215,21 @@ background-position: center;
 .rodape h2 {
     font-size: 32px;
     margin-bottom: 5px;
+    color: #f28c28;
     font-weight: bold;
 }
 
 .rodape p {
     font-size: 15px;
-    margin: 4px 0;
+    margin: 5px 0;
 }
 
 .rodape .copyright {
     margin-top: 20px;
     padding-top: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(242, 140, 40, 0.35);
+    color: #f28c28;
     font-size: 13px;
-    opacity: 0.8;
+    font-weight: 500;
 }
+```
