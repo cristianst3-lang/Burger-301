@@ -7,7 +7,48 @@ let carrinho = [];
 let produtoAtual = null;
 let quantidadeAtual = 1;
 
+/* =========================================
+   CONTROLE AUTOMÁTICO DE HORÁRIO
+========================================= */
 
+function pedidosEstaoAbertos() {
+
+    const agora = new Date();
+
+    const dia = agora.getDay();
+    const hora = agora.getHours();
+    const minutos = agora.getMinutes();
+
+    const horarioAtual =
+        hora * 60 + minutos;
+
+    const inicio =
+        19 * 60; // mantenha seu horário de abertura
+
+    const fim =
+        23 * 60; // 23h00
+
+    const diaValido =
+        dia === 5 || dia === 6; // sexta ou sábado
+
+    const horarioValido =
+        horarioAtual >= inicio &&
+        horarioAtual < fim;
+
+    return diaValido && horarioValido;
+
+}
+/* =========================================
+   AVISO FORA DO EXPEDIENTE
+========================================= */
+
+function mostrarAvisoForaDoExpediente() {
+
+    mostrarMensagem(
+        "🍔 Pedidos fechados no momento! Nosso atendimento funciona às sextas e sábados, das 19h30 às 22h. Burger 301 agradece pela compreensão! ❤️"
+    );
+
+}
 /* =========================================
    ELEMENTOS
 ========================================= */
@@ -129,7 +170,38 @@ const botoesAdicionar =
 botoesAdicionar.forEach(function (botao) {
 
     botao.addEventListener("click", function () {
+if (!pedidosEstaoAbertos()) {
 
+    const mensagem = document.createElement("div");
+
+    mensagem.textContent =
+        "🍔 Pedidos fechados no momento! Nosso atendimento funciona às sextas e sábados, das 19h30 às 23h. Burger 301 agradece pela compreensão! ❤️";
+
+    mensagem.style.position = "fixed";
+    mensagem.style.top = "20px";
+    mensagem.style.left = "50%";
+    mensagem.style.transform = "translateX(-50%)";
+    mensagem.style.zIndex = "9999";
+    mensagem.style.background = "#222";
+    mensagem.style.color = "#fff";
+    mensagem.style.padding = "15px 20px";
+    mensagem.style.borderRadius = "10px";
+    mensagem.style.textAlign = "center";
+    mensagem.style.width = "90%";
+    mensagem.style.maxWidth = "420px";
+    mensagem.style.boxSizing = "border-box";
+
+    document.body.appendChild(mensagem);
+
+    setTimeout(function () {
+
+        mensagem.remove();
+
+    }, 3000);
+
+    return;
+
+}
         const nome =
             botao.dataset.produto;
 
@@ -694,6 +766,39 @@ finalizarPedido.addEventListener(
 
         }
 
+        if (!pedidosEstaoAbertos()) {
+
+            const mensagem = document.createElement("div");
+
+            mensagem.textContent =
+                "🍔 Pedidos fechados no momento! Nosso atendimento funciona às sextas e sábados, das 19h30 às 23h. Burger 301 agradece pela compreensão! ❤️";
+
+            mensagem.style.position = "fixed";
+            mensagem.style.top = "20px";
+            mensagem.style.left = "50%";
+            mensagem.style.transform = "translateX(-50%)";
+            mensagem.style.zIndex = "9999";
+            mensagem.style.background = "#222";
+            mensagem.style.color = "#fff";
+            mensagem.style.padding = "15px 20px";
+            mensagem.style.borderRadius = "10px";
+            mensagem.style.textAlign = "center";
+            mensagem.style.width = "90%";
+            mensagem.style.maxWidth = "420px";
+            mensagem.style.boxSizing = "border-box";
+
+            document.body.appendChild(mensagem);
+
+            setTimeout(function () {
+
+                mensagem.remove();
+
+            }, 3000);
+
+            return;
+
+        }
+
         painelCarrinho.classList.remove(
             "aberto"
         );
@@ -752,7 +857,38 @@ formularioPedido.addEventListener(
     function (evento) {
 
         evento.preventDefault();
+        if (!pedidosEstaoAbertos()) {
 
+            const mensagem = document.createElement("div");
+
+            mensagem.textContent =
+                "🍔 Pedidos fechados no momento! Nosso atendimento funciona às sextas e sábados, das 19h30 às 23h. Burger 301 agradece pela compreensão! ❤️";
+
+            mensagem.style.position = "fixed";
+            mensagem.style.top = "20px";
+            mensagem.style.left = "50%";
+            mensagem.style.transform = "translateX(-50%)";
+            mensagem.style.zIndex = "9999";
+            mensagem.style.background = "#222";
+            mensagem.style.color = "#fff";
+            mensagem.style.padding = "15px 20px";
+            mensagem.style.borderRadius = "10px";
+            mensagem.style.textAlign = "center";
+            mensagem.style.width = "90%";
+            mensagem.style.maxWidth = "420px";
+            mensagem.style.boxSizing = "border-box";
+
+            document.body.appendChild(mensagem);
+
+            setTimeout(function () {
+
+                mensagem.remove();
+
+            }, 3000);
+
+            return;
+
+        }
 
         if (carrinho.length === 0) {
 
