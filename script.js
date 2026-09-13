@@ -610,10 +610,9 @@ ${item.observacao ? `
 ` : ""}
 
 <p>
-    ${formatarMoeda(item.valorUnitario)}
-    cada
+        Total do iten:
+        ${formatarMoeda(subtotal)}
 </p>
-
             </div>
 
 
