@@ -1085,9 +1085,9 @@ mensagem +=
     mensagem += ` Observação: ${item.observacao}\n`;
 }
 if (item.adicionais && item.adicionais.length > 0) {
-item.adicionais.forEach(adicional => {
-    mensagem += `+ ${adicional.nome}\n`;
-});
+    item.adicionais.forEach(adicional => {
+        mensagem += `+ ${adicional.nome} - ${formatarMoeda(adicional.preco)}\n`;
+    });
 }
 
 
