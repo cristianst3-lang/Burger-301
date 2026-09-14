@@ -1079,14 +1079,14 @@ formularioPedido.addEventListener(
 
 
 mensagem +=
-    `${item.quantidade}x ${item.nome} - ${formatarMoeda(subtotal)}\n`;
+    `${item.quantidade}x ${item.nome} - ${formatarMoeda(item.precoBase)}\n`;
 
     if (item.observacao && item.observacao.trim() !== "") {
     mensagem += ` Observação: ${item.observacao}\n`;
 }
 if (item.adicionais && item.adicionais.length > 0) {
     item.adicionais.forEach(adicional => {
-        mensagem += `+ ${adicional.nome} - ${formatarMoeda(adicional.preco)}\n`;
+mensagem += `+ ${adicional.nome} - ${formatarMoeda(adicional.preco)}\n`;
     });
 }
 
