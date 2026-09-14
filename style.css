@@ -1246,3 +1246,109 @@ background-position: center;
     margin: 0 0 8px;
     font-weight: 500;
 }
+
+/* Controles de quantidade no carrinho */
+
+.controle-quantidade {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.controle-quantidade span {
+    margin-right: 3px;
+    color: #555;
+}
+
+.controle-quantidade strong {
+    min-width: 28px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    color: #111;
+}
+
+.controle-quantidade button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    color: #222;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.controle-quantidade button:hover {
+    background-color: #f28c28;
+    color: white;
+    border-color: #f28c28;
+}
+
+.controle-quantidade button:active {
+    transform: scale(0.95);
+}
+
+.controle-quantidade span {
+    margin-right: 4px;
+}
+
+.controle-quantidade strong {
+    min-width: 24px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.controle-quantidade button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 8px;
+    background: #f1f1f1;
+    color: #222;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.controle-quantidade button:hover {
+    background: #dcdcdc;
+}
+
+.controle-quantidade button:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 480px) {
+
+    .controle-quantidade {
+        gap: 6px;
+        font-size: 13px;
+    }
+
+    .controle-quantidade button {
+        width: 28px;
+        height: 28px;
+        font-size: 18px;
+    }
+
+    .controle-quantidade strong {
+        min-width: 24px;
+        height: 28px;
+    }
+
+}
