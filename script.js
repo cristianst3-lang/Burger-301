@@ -578,11 +578,12 @@ function atualizarCarrinho() {
                     ${item.adicionais
                         .map(function (adicional) {
 
-                            return `
-                                <span>
-                                    + ${adicional.nome}
-                                </span>
-                            `;
+return `
+    <span>
+        + ${adicional.nome}
+        — ${formatarMoeda(adicional.preco)}
+    </span>
+`;
 
                         })
                         .join("")}
@@ -597,9 +598,33 @@ function atualizarCarrinho() {
 
             <div class="item-carrinho-info">
 
-                <h3>
-                    ${item.quantidade}x ${item.nome}
-                </h3>
+<h3>
+    ${item.nome}
+</h3>
+
+<p class="controle-quantidade">
+
+    <span>Quantidade:</span>
+
+    <button
+        type="button"
+        class="botao-diminuir"
+        data-id="${item.id}">
+        −
+    </button>
+
+    <strong>
+        ${item.quantidade}
+    </strong>
+
+    <button
+        type="button"
+        class="botao-aumentar"
+        data-id="${item.id}">
+        +
+    </button>
+
+</p>
 
 ${adicionaisHTML}
 
@@ -610,9 +635,10 @@ ${item.observacao ? `
 ` : ""}
 
 <p>
-        Total do iten:
-        ${formatarMoeda(subtotal)}
+    Total do item:
+    ${formatarMoeda(subtotal)}
 </p>
+
             </div>
 
 
@@ -684,9 +710,7 @@ ${item.observacao ? `
 function configurarBotoesRemover() {
 
     document
-        .querySelectorAll(
-            ".botao-remover"
-        )
+        .querySelectorAll(".botao-remover")
         .forEach(function (botao) {
 
             botao.addEventListener(
@@ -694,22 +718,83 @@ function configurarBotoesRemover() {
                 function () {
 
                     const id =
-                        Number(
-                            botao.dataset.id
-                        );
+                        Number(botao.dataset.id);
 
                     carrinho =
-                        carrinho.filter(
-                            function (item) {
-
-                                return (
-                                    item.id !== id
-                                );
-
-                            }
-                        );
+                        carrinho.filter(function (item) {
+                            return item.id !== id;
+                        });
 
                     atualizarCarrinho();
+
+                }
+            );
+
+        });
+
+
+    document
+        .querySelectorAll(".botao-aumentar")
+        .forEach(function (botao) {
+
+            botao.addEventListener(
+                "click",
+                function () {
+
+                    const id =
+                        Number(botao.dataset.id);
+
+                    const item =
+                        carrinho.find(function (item) {
+                            return item.id === id;
+                        });
+
+                    if (item) {
+
+                        item.quantidade++;
+
+                        atualizarCarrinho();
+
+                    }
+
+                }
+            );
+
+        });
+
+
+    document
+        .querySelectorAll(".botao-diminuir")
+        .forEach(function (botao) {
+
+            botao.addEventListener(
+                "click",
+                function () {
+
+                    const id =
+                        Number(botao.dataset.id);
+
+                    const item =
+                        carrinho.find(function (item) {
+                            return item.id === id;
+                        });
+
+                    if (item) {
+
+                        item.quantidade--;
+
+                        if (item.quantidade <= 0) {
+
+                            carrinho =
+                                carrinho.filter(function (item) {
+                                    return item.id !== id;
+                                });
+
+                        }
+
+                        atualizarCarrinho();
+
+                    }
 
                 }
             );
@@ -964,12 +1049,10 @@ formularioPedido.addEventListener(
            MENSAGEM WHATSAPP
         ====================================== */
 
-        let mensagem =
-            "🍔 *NOVO PEDIDO - BURGER 301*\n\n";
+        let mensagem = `🍔 *NOVO PEDIDO - BURGER 301*\n\n`;
 
 
-        mensagem +=
-            `Nome: ${nome}\n`;
+
 
         mensagem +=
             `Torre: ${torre}\n`;
@@ -999,22 +1082,12 @@ mensagem +=
     `${item.quantidade}x ${item.nome} - ${formatarMoeda(subtotal)}\n`;
 
     if (item.observacao && item.observacao.trim() !== "") {
-    mensagem +=
-        `📝 Observação: ${item.observacao}\n`;
+    mensagem += ` Observação: ${item.observacao}\n`;
 }
-
-if (
-    item.adicionais.length > 0
-) {
-
-   item.adicionais.forEach(
-    function (adicional) {
-
-        mensagem +=
-            `➕ ${adicional.nome}\n`;
-
-    }
-);
+if (item.adicionais && item.adicionais.length > 0) {
+item.adicionais.forEach(adicional => {
+    mensagem += `+ ${adicional.nome}\n`;
+});
 }
 
 
