@@ -1079,17 +1079,25 @@ formularioPedido.addEventListener(
 
 
 mensagem +=
-    `${item.quantidade}x ${item.nome} - ${formatarMoeda(item.precoBase)}\n`;
+    `${item.quantidade}x ${item.nome} - ${formatarMoeda(item.precoBase * item.quantidade)}\n`;
 
-    if (item.observacao && item.observacao.trim() !== "") {
-    mensagem += ` Observação: ${item.observacao}\n`;
-}
 if (item.adicionais && item.adicionais.length > 0) {
-    item.adicionais.forEach(adicional => {
-mensagem += `+ ${adicional.nome} - ${formatarMoeda(adicional.preco)}\n`;
+
+    item.adicionais.forEach(function (adicional) {
+
+        mensagem +=
+            `   + ${adicional.nome} - ${formatarMoeda(adicional.preco)}\n`;
+
     });
+
 }
 
+if (item.observacao && item.observacao.trim() !== "") {
+
+    mensagem +=
+        `Observação: ${item.observacao}\n`;
+
+}
 
 if (item.observacao) {
 
